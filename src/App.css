@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+html, body, #root, .app-root {
+  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.app-root {
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.splash-screen {
+  background-color: #242424;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+}
+
+.splash-screen h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+}
+
+.points-bar {
+  color: #b0b0b0;
+  font-size: 1.7rem;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+  position: absolute;
+  top: 2vh;
+  left: 0;
+  width: 100vw;
+  z-index: 20;
+}
+
+.main-question {
+  color: #fff;
+  font-size: 2.2rem;
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  letter-spacing: 1px;
+  margin: 0 0 0.5rem 0;
+  max-width: 90vw;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  position: relative;
+  top: -10vh;
+}
+
+.courgette {
+  color: #7bb661;
+  background: linear-gradient(90deg, #7bb661 60%, #bada55 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.bicyclette {
+  color: #e57373;
+  background: linear-gradient(90deg, #e57373 60%, #ffb3b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.choices-bar {
+  position: absolute;
+  bottom: 3vh;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.7rem;
+  z-index: 10;
+}
+
+.choice {
+  color: #fff;
+  background: #242424;
+  border-radius: 1.5rem;
+  padding: 0.7rem 1.7rem;
+  font-size: 1.3rem;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s, box-shadow 0.2s;
+  user-select: none;
+  box-shadow: 0 2px 8px #0002;
+  outline: none;
+  min-width: 270px;
+  text-align: center;
+  display: inline-block;
+}
+.choice:first-child {
+  box-shadow: 0 0 0 6px 0px #242424, 0 0 0 12px 0px radial-gradient(circle, #7bb661 60%, #242424 100%), 0 2px 8px #0002;
+  box-shadow: 0 0 0 6px #242424, 0 0 16px 8px #7bb66180, 0 2px 8px #0002;
+}
+.choice:nth-child(2) {
+  box-shadow: 0 0 0 6px #242424, 0 0 16px 8px #e5737380, 0 2px 8px #0002;
+}
+.choice:last-child {
+  box-shadow: 0 0 0 6px #242424, 0 0 16px 8px #b0b0b080, 0 2px 8px #0002;
+}
