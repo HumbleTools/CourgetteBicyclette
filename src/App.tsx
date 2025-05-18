@@ -13,6 +13,7 @@ const App = () => {
   const [inactive, setInactive] = useState(true)
   const [animatePoints, setAnimatePoints] = useState(false)
   const [finalScreen, setFinalScreen] = useState(false)
+  const [shakePoints, setShakePoints] = useState(false)
 
   useEffect(() => {
     if (loading) {
@@ -26,7 +27,7 @@ const App = () => {
         setQuestion(getRandomCombo())
         setDots('.')
         setInactive(false)
-      }, 3000) // délai passé à 3 secondes
+      }, 2000)
       return () => {
         clearInterval(interval)
         clearTimeout(timeout)
@@ -68,6 +69,8 @@ const App = () => {
   const handleAddTotal = () => {
     if (!inactive && total < maxPoints) {
       setTotal((prev) => prev + 1)
+      setShakePoints(true)
+      setTimeout(() => setShakePoints(false), 400)
     }
   }
 
@@ -93,7 +96,7 @@ const App = () => {
 
   useEffect(() => {
     if (total >= maxPoints) {
-      setTimeout(() => setFinalScreen(true), 400) // attend la fin de l'animation du score
+      setTimeout(() => setFinalScreen(true), 400)
     }
   }, [total])
 
@@ -121,7 +124,7 @@ const App = () => {
     </div>
   ) : (
     <div className="app-root" onClick={handleScreenTouch} style={{ cursor: loading ? 'wait' : 'pointer' }}>
-      <div className={`points-bar${animatePoints ? ' points-animate' : ''}`}>Points: {points}/{total}</div>
+      <div className={`points-bar${animatePoints ? ' points-animate' : ''}${shakePoints ? ' points-shake' : ''}`}>Points: {points}/{total}</div>
       <div className="main-question">
         {loading ? (
           <span style={{ fontFamily: 'Luckiest Guy', fontSize: '2.2rem', letterSpacing: '1px' }}>
