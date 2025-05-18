@@ -4,8 +4,8 @@ import gameData from './assets/gameData.json'
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true)
-  const [points, setPoints] = useState(9)
-  const [total, setTotal] = useState(9)
+  const [points, setPoints] = useState(0)
+  const [total, setTotal] = useState(0)
   const maxPoints = 10
   const [question, setQuestion] = useState<React.ReactNode>('Est-ce que ça se peut...')
   const [loading, setLoading] = useState(false)
@@ -71,6 +71,15 @@ const App = () => {
     }
   }
 
+  const handleReplay = () => {
+    setFinalScreen(false);
+    setPoints(0);
+    setTotal(0);
+    setInactive(true);
+    setQuestion('Est-ce que ça se peut...');
+    setLoading(false);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 5000)
     return () => clearTimeout(timer)
@@ -89,7 +98,7 @@ const App = () => {
   }, [total])
 
   return showSplash ? (
-    <div className="splash-screen">
+    <div className="splash-screen" onClick={() => setShowSplash(false)}>
       <h1 className="splash-luckiest">
         Une <span className="courgette">courgette</span> à{' '}
         <span className="bicyclette">bicyclette</span>
@@ -107,6 +116,7 @@ const App = () => {
           "C'est pas mal, mais vous pouvez mieux faire !"}
         {points >= 0 && points <= 3 &&
           "Vous ne jouez pas en équipe. Allez, tous ensemble !"}
+        <button className="replay-btn" onClick={handleReplay}>Rejouer</button>
       </div>
     </div>
   ) : (
