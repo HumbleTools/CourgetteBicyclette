@@ -1,6 +1,6 @@
-import './App.css'
 import { useEffect, useState } from 'react'
 import gameData from './assets/gameData.json'
+import styles from './App.module.css'
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true)
@@ -48,12 +48,9 @@ const App = () => {
     const objet = objets[Math.floor(Math.random() * objets.length)]
     const action = actions[Math.floor(Math.random() * actions.length)]
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <span style={{ marginBottom: '2.2rem' }}>Est-ce que ça se peut...</span>
-        <span>
-          <span className="courgette">{objet}</span> qui <span className="bicyclette">{action}</span> ?
-        </span>
-      </div>
+      <span>
+        <span className={styles['courgette']}>{objet}</span> qui <span className={styles['bicyclette']}>{action}</span> ?
+      </span>
     )
   }
 
@@ -101,43 +98,50 @@ const App = () => {
   }, [total])
 
   return showSplash ? (
-    <div className="splash-screen" onClick={() => setShowSplash(false)}>
-      <h1 className="splash-luckiest">
-        Une <span className="courgette">courgette</span> à{' '}
-        <span className="bicyclette">bicyclette</span>
+    <div className={styles['splash-screen']} onClick={() => setShowSplash(false)}>
+      <h1 className={styles['splash-luckiest']}>
+        Une <span className={styles['courgette']}>courgette</span> à{' '}
+        <span className={styles['bicyclette']}>bicyclette</span>
       </h1>
     </div>
   ) : finalScreen ? (
-    <div className="final-screen">
-      <div className={`points-final`}>
+    <div className={styles['final-screen']}>
+      <div className={styles['points-final']}>
         {points}/{total}
       </div>
-      <div className="final-message">
+      <div className={styles['final-message']}>
         {points === 10 && 'Quelle équipe hors pair !'}
         {points >= 7 && points <= 9 && 'Vous êtes une équipe efficace !'}
         {points >= 4 && points <= 6 && 
           "C'est pas mal, mais vous pouvez mieux faire !"}
         {points >= 0 && points <= 3 &&
           "Vous ne jouez pas en équipe. Allez, tous ensemble !"}
-        <button className="replay-btn" onClick={handleReplay}>Rejouer</button>
+        <button className={styles['replay-btn']} onClick={handleReplay}>Rejouer</button>
       </div>
     </div>
   ) : (
-    <div className="app-root" onClick={handleScreenTouch} style={{ cursor: loading ? 'wait' : 'pointer' }}>
-      <div className={`points-bar${animatePoints ? ' points-animate' : ''}${shakePoints ? ' points-shake' : ''}`}>Points: {points}/{total}</div>
-      <div className="main-question">
-        {loading ? (
-          <span style={{ fontFamily: 'Luckiest Guy', fontSize: '2.2rem', letterSpacing: '1px' }}>
-            Est-ce que ça se peut<span className="loading-dots">{dots}</span>
+    <div className={styles['app-root']} onClick={handleScreenTouch}>
+      <div className={
+        styles['points-bar'] +
+        (animatePoints ? ' ' + styles['points-animate'] : '') +
+        (shakePoints ? ' ' + styles['points-shake'] : '')
+      }>Points: {points}/{total}</div>
+      <div className={styles['main-question']}>
+        <div className={styles['main-question-inner']}>
+          <span className={styles['main-question-title']}>
+            Est-ce que ça se peut{loading ? <span className={styles['loading-dots']}>{dots}</span> : '...'}
           </span>
-        ) : (
-          question
-        )}
+          {!loading && typeof question === 'object' && question !== 'Est-ce que ça se peut...' ? (
+            <span className={styles['combo']}>{question}</span>
+          ) : (
+            <span className={styles['combo']}>&nbsp;</span>
+          )}
+        </div>
       </div>
-      <div className="choices-bar">
-        <span className={`choice${inactive ? ' choice-inactive' : ''}`} onClick={inactive ? undefined : handleAddPoint}>Tous d'accord !</span>
-        <span className={`choice${inactive ? ' choice-inactive' : ''}`} onClick={inactive ? undefined : handleAddPoint}>Tous pas d'accord !</span>
-        <span className={`choice${inactive ? ' choice-inactive' : ''}`} onClick={inactive ? undefined : handleAddTotal}>En désaccord...</span>
+      <div className={styles['choices-bar']}>
+        <span className={styles['choice'] + (inactive ? ' ' + styles['choice-inactive'] : '')} onClick={inactive ? undefined : handleAddPoint}>Tous d'accord !</span>
+        <span className={styles['choice'] + (inactive ? ' ' + styles['choice-inactive'] : '')} onClick={inactive ? undefined : handleAddPoint}>Tous pas d'accord !</span>
+        <span className={styles['choice'] + (inactive ? ' ' + styles['choice-inactive'] : '')} onClick={inactive ? undefined : handleAddTotal}>En désaccord...</span>
       </div>
     </div>
   )

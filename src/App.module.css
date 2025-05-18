@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
-html, body, #root, .app-root {
+.html, .body, .root, .app-root {
   height: 100vh;
   min-height: 100vh;
   margin: 0;
@@ -32,7 +32,7 @@ html, body, #root, .app-root {
   overflow: hidden;
 }
 
-.splash-screen h1 {
+.splash-luckiest {
   color: #fff;
   font-size: 4.5rem;
   text-align: center;
@@ -71,6 +71,28 @@ html, body, #root, .app-root {
   min-height: 0;
   position: relative;
   top: -10vh;
+}
+
+.main-question-inner {
+  min-height: 3.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-question-title {
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  min-height: 1.2em;
+  display: block;
+}
+
+.combo {
+  margin-top: 2.2rem;
+  display: block;
+  min-height: 1.2em;
 }
 
 .courgette {
