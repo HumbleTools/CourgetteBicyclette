@@ -131,3 +131,109 @@ html, body, #root, .app-root {
 .choice:last-child {
   box-shadow: 0 0 0 6px #242424, 0 0 16px 8px #b0b0b080, 0 2px 8px #0002;
 }
+
+.choice-inactive {
+  background: #444 !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: none;
+}
+
+.loading-dots {
+  display: inline-block;
+  width: 1.5em;
+  text-align: left;
+  animation: blink 1s steps(1, end) infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.points-animate {
+  animation: pointsFlash 0.4s cubic-bezier(.36,1.56,.64,1) both;
+}
+@keyframes pointsFlash {
+  0% {
+    transform: scale(1);
+    color: #b0b0b0;
+    text-shadow: none;
+  }
+  20% {
+    transform: scale(1.18) rotate(-3deg);
+    color: #fff700;
+    text-shadow: 0 0 12px #fff700, 0 0 24px #fff70080;
+  }
+  60% {
+    transform: scale(0.95) rotate(2deg);
+    color: #fff700;
+    text-shadow: 0 0 8px #fff700, 0 0 16px #fff70080;
+  }
+  100% {
+    transform: scale(1);
+    color: #b0b0b0;
+    text-shadow: none;
+  }
+}
+
+.final-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background 0.5s;
+}
+.points-final {
+  font-size: 5rem;
+  color: #fff700;
+  text-shadow: 0 0 32px #fff700, 0 0 64px #fff70080;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  background: none;
+  box-shadow: none;
+  margin: 0 auto;
+  padding: 0.5em 1.5em;
+  border-radius: 2rem;
+  animation: finalScorePop 0.7s cubic-bezier(.36,1.56,.64,1);
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  transform: translate(-50%, 0); /* centrage horizontal uniquement, pas de translation verticale */
+}
+.final-message {
+  color: #fff;
+  font-size: 2.1rem;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  text-align: center;
+  margin-top: 2.5rem;
+  text-shadow: 0 2px 8px #0008;
+  max-width: 90vw;
+}
+@keyframes finalScorePop {
+  0% {
+    left: 50%;
+    top: -20vh;
+    transform: translate(-50%, 0) scale(0.7) rotate(-8deg);
+    opacity: 0;
+  }
+  60% {
+    left: 50%;
+    top: 22%;
+    transform: translate(-50%, 0) scale(1.15) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    left: 50%;
+    top: 22%;
+    transform: translate(-50%, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
