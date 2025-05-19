@@ -34,10 +34,14 @@
 
 .splash-luckiest {
   color: #fff;
-  font-size: 4.5rem;
+  font-size: 3rem;
   text-align: center;
   margin-bottom: 1.5rem;
   font-family: 'Luckiest Guy', cursive, sans-serif;
+  max-width: 90vw;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .points-bar {
@@ -117,13 +121,12 @@
 
 .choices-bar {
   position: absolute;
-  bottom: 3vh;
-  left: 0;
+  bottom: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.7rem;
+  gap: 2.6rem;
   z-index: 10;
 }
 
@@ -131,7 +134,8 @@
   color: #fff;
   background: #242424;
   border-radius: 1.5rem;
-  padding: 0.7rem 1.7rem;
+  padding: 0.3rem;
+  width: 70vw;
   font-size: 1.3rem;
   font-family: 'Luckiest Guy', cursive, sans-serif;
   cursor: pointer;
@@ -139,7 +143,6 @@
   user-select: none;
   box-shadow: 0 2px 8px #0002;
   outline: none;
-  min-width: 270px;
   text-align: center;
   display: inline-block;
 }
@@ -241,21 +244,21 @@
   text-align: center;
   position: absolute;
   left: 50%;
-  top: 22%;
-  transform: translate(-50%, 0); /* centrage horizontal uniquement, pas de translation verticale */
+  top: 16%;
+  transform: translate(-50%, 0);
 }
 .final-message {
   color: #fff;
   font-size: 2.1rem;
   font-family: 'Luckiest Guy', cursive, sans-serif;
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 5rem;
   text-shadow: 0 2px 8px #0008;
   max-width: 90vw;
 }
 .replay-btn {
   display: block;
-  margin: 2.5rem auto 0 auto;
+  margin: 4rem auto 0 auto;
   padding: 0.8em 2.2em;
   font-size: 1.5rem;
   font-family: 'Luckiest Guy', cursive, sans-serif;
@@ -283,13 +286,13 @@
   }
   60% {
     left: 50%;
-    top: 22%;
+    top: 16%;
     transform: translate(-50%, 0) scale(1.15) rotate(2deg);
     opacity: 1;
   }
   100% {
     left: 50%;
-    top: 22%;
+    top: 16%;
     transform: translate(-50%, 0) scale(1) rotate(0deg);
     opacity: 1;
   }

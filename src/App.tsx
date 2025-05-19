@@ -100,7 +100,7 @@ const App = () => {
   return showSplash ? (
     <div className={styles['splash-screen']} onClick={() => setShowSplash(false)}>
       <h1 className={styles['splash-luckiest']}>
-        Une <span className={styles['courgette']}>courgette</span> à{' '}
+        Une<br /><span className={styles['courgette']}>courgette</span><br />à<br />
         <span className={styles['bicyclette']}>bicyclette</span>
       </h1>
     </div>

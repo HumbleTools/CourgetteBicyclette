@@ -1,54 +1,24 @@
-# React + TypeScript + Vite
+# Une Courgette à Bicyclette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🎲 Le Jeu
 
-Currently, two official plugins are available:
+"Une Courgette à Bicyclette" est un jeu d’ambiance pour enfants (et grands enfants !) où l’on doit voter en équipe sur des combinaisons farfelues générées aléatoirement : « Est-ce que ça se peut… une baleine qui fait du vélo ? ». À chaque tour, une phrase apparaît, et les joueurs doivent voter : tout le monde est-il d’accord, pas d’accord, ou en désaccord ? Le but : marquer le plus de points en jouant collectivement !
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Règles du Jeu
 
-## Expanding the ESLint configuration
+- La phrase « Est-ce que ça se peut… » est suivie d’une combinaison aléatoire (objet + action) à chaque tour.
+- Il y a trois boutons de vote : « Tous d’accord ! », « Tous pas d’accord ! », « En désaccord… ».
+- Les votes font avancer le score : +1 point si tout le monde est d’accord ou pas d'accord avec la phrase, sinon aucun point.
+- Le jeu se termine après 10 tours : un écran final affiche le score et un message selon la performance.
+- Un bouton « Rejouer » permet de relancer une partie.
+- Interface colorée, animations ludiques et feedback visuel sur les actions.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Stack Technique
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- React 19 + TypeScript
+- Vite pour le bundling et le hot reload
+- CSS Modules pour un style encapsulé et moderne
+- Génération de phrases à partir d’un fichier JSON (objets/actions)
+- Animations CSS (splash, score, boutons, transitions)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Made with Copilot
