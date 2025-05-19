@@ -121,7 +121,7 @@
 
 .choices-bar {
   position: absolute;
-  bottom: 10vh;
+  bottom: 12vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
